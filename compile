@@ -1,0 +1,10 @@
+#!/bin/bash
+rm -R ./bin/
+mkdir bin
+#MYCMD="javac -cp .:./lib/* -d bin -g -Xlint 
+echo ./src/*.java > myFiles
+
+#javac -cp ".:lib/*" @cOptions @myFiles 
+javac @cOptions @myFiles 
+
+rm ./myFiles

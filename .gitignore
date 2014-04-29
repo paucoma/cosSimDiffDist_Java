@@ -1,0 +1,2 @@
+# ignore the generated classes, we will regenerate them each time
+bin/*
