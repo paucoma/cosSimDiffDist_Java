@@ -13,6 +13,9 @@ import com.paucoma.cossimdiff.Math_csd;
 import java.util.Set;
 import java.util.Map;
 
+import java.util.HashSet;
+import java.util.Iterator;
+
 public class CsdElement {
 
 	private String m_Object;
@@ -22,13 +25,40 @@ public class CsdElement {
 	public double _magnitude;
 
 	public static void main(String[] args) {
+        
+        	Set<CsdElement> myElements = new HashSet<CsdElement>();
+            for(String myStr : args){
+                myElements.add(new CsdElement(myStr));
+            }
+            /*
+            for(int i=0;i<myElements.size();i++){
+            	CsdElement myElem = myElements.get()){
+            	System.out.println(myElem);
+            	for(CsdElement myOther : myElements){
+            		System.out.println(myElem.compareTo(myOther));
+            	}
+            }*/
+            Iterator<CsdElement> itA = myElements.iterator();
+            Iterator<CsdElement> itB;
+            while(itA.hasNext()){
+		       	CsdElement myElemA = itA.next();
+				itB = myElements.iterator();
+				while(itB.hasNext()){
+					CsdElement myElemB = itB.next();
+					System.out.println(myElemA.compareTo(myElemB));
+				}
+		    }
+        //}
+
+/*
     	CsdElement myA = new CsdElement("Pau");
     	CsdElement myB = new CsdElement("Paola");
     	System.out.println(myA);
     	System.out.println(myB);
     	System.out.println("A->B = "+myA.compareTo(myB));
-    	System.out.println("B->A = "+myB.compareTo(myA));
+    	System.out.println("B->A = "+myB.compareTo(myA));*/
 	}
+
 	public void set(String myIn){
 		m_Object = myIn;
 		this.precalculate();
