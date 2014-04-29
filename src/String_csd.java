@@ -10,6 +10,7 @@ package com.paucoma.cossimdiff;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
@@ -82,7 +83,7 @@ public class String_csd {
 	 *
 	 */
 	public static Set<String> getUnionBasis(Set<String> myIn1, Set<String> myIn2){
-		Set<String> myOut = new HashSet<String>();
+		Set<String> myOut = new TreeSet<String>();
 		myOut.addAll(myIn1);
 		myOut.addAll(myIn2);
 		return myOut;
@@ -93,22 +94,20 @@ public class String_csd {
 	 * @
 	 */
 	//TODO : add check to see if the given Basis is a superset of the Coordinates
-	public static int[] getVectorOfBasis(Map<String,Integer> myIn, Set<String> myBasis){
-		Set<Integer> myOut = new LinkedHashSet<Integer>();
+	public static Integer[] getVectorOfBasis(Map<String,Integer> myIn, Set<String> myBasis){
+		List<Integer> myOut = new ArrayList<Integer>();
 		Set<String> myOrderedBasis = new TreeSet<String>(myBasis);
+		//System.out.println(myBasis);
+		//System.out.println(myOrderedBasis);
 		for(String myStr : myOrderedBasis){
-			int myVal = 0;
+			Integer myVal = 0;
 			if(myIn.containsKey(myStr)){
 				myVal = myIn.get(myStr);
 			}
 			myOut.add(myVal);
 		}
 		Integer[] intArr = new Integer[myOut.size()];
-		intArr = myOut.toArray(intArr);
-		int[] myInts = new int[myOut.size()];
-		for(int i=0;i<intArr.length;i++){
-			myInts[i]=intArr[i].intValue();
-		}
-		return myInts;
+		//System.out.println(myOut.size() + ":::" + intArr.length);	
+		return myOut.toArray(intArr);
 	}
 }

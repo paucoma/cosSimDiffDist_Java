@@ -37,6 +37,23 @@ public class Math_csd {
 		}
 		return sum;
 	}
+	public static Integer dotProduct(Integer[] a, Integer[] b){
+		if(a.length != b.length){
+			throw new IllegalArgumentException("The dimensions have to be equal!");
+		}
+		Integer sum = 0;
+		for(int i = 0; i < a.length; i++){
+			sum += a[i] * b[i];
+		}
+		return sum;
+	}
+	public static Double magnitude(Integer[] myIn){
+		Integer mySum = 0;
+		for(Integer a : myIn){
+			mySum += a;
+		}
+		return Math.sqrt(mySum);
+	}
 	public static double magnitude(int[] myIn){
 		int mySum = 0;
 		for(int a : myIn){
@@ -51,5 +68,5 @@ public class Math_csd {
 		}
 		return Math.sqrt(mySum);
 	}
-	
+
 }
