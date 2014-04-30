@@ -75,7 +75,18 @@ public class CmdLineInterface {
         for(String myStr : _compareStrs){
             //myElements.add(new CsdElement(myStr));
             CsdElement myCompare = new CsdElement(myStr);
-            myRet.put(myStr,myBase.compareTo(myCompare));
+            myRet.put(myStr,myBase.compareTo(myCompare,4));
+        }
+    	return myRet;
+    }
+    private Map<String,Double> getComparison2(){
+    	Map<String,Double> myRet = new HashMap<String,Double>();
+    	CsdElement2 myBase = new CsdElement2(_baseStr);
+    	//List<CsdElement> myElements = new ArrayList<CsdElement>();
+        for(String myStr : _compareStrs){
+            //myElements.add(new CsdElement(myStr));
+            CsdElement2 myCompare = new CsdElement2(myStr);
+            myRet.put(myStr,myBase.compareTo(myCompare,4));
         }
     	return myRet;
     }
@@ -85,7 +96,8 @@ public class CmdLineInterface {
 	    Collections.sort(entryList, new Comparator<Map.Entry<String, Double>>() {
 	        @Override
 	        public int compare(Entry<String, Double> o1, Entry<String, Double> o2) {
-	            return o1.getValue().compareTo(o2.getValue());
+	            //switch o2 and o1 around to change from decreasing to increasing
+	            return o2.getValue().compareTo(o1.getValue());
 	        }
 	    });
 	    return entryList;
@@ -160,6 +172,18 @@ public class CmdLineInterface {
 		this.loadArgs(args);
 		Map<String,Double> nonSortedMap = getComparison();
 		for (Entry<String,Double> entry : getKeySortedByValue(nonSortedMap)){
+			System.out.println(entry.getValue()+"\t"+entry.getKey());	
+		}
+		Map<String,Double> nonSortedMap2 = getComparison2();
+		for (Entry<String,Double> entry : getKeySortedByValue(nonSortedMap2)){
+			System.out.println(entry.getValue()+"\t"+entry.getKey());	
+		}
+		Map<String,Double> nonSortedMap3 = new HashMap<String,Double>();
+		for(String myStr : nonSortedMap.keySet()){
+			nonSortedMap3.put(myStr,
+				nonSortedMap.get(myStr)*nonSortedMap2.get(myStr));
+		}
+		for (Entry<String,Double> entry : getKeySortedByValue(nonSortedMap3)){
 			System.out.println(entry.getValue()+"\t"+entry.getKey());	
 		}
 		//System.out.println(getComparison());

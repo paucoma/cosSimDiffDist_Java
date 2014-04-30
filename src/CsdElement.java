@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import java.lang.Math;
+
 public class CsdElement {
 
 	private String m_Object;
@@ -23,6 +25,8 @@ public class CsdElement {
 	private String[] m_Canonical;
 	public Map<String,Integer> _Coordinates = null;
 	public double _magnitude;
+
+	private List<String> _log = new ArrayList<String>();
 
 	public static void main(String[] args) {
         
@@ -39,6 +43,13 @@ public class CsdElement {
 		    }
 	}
 
+	private void log(Object myObj){
+		if (myObj instanceof String) {
+        	_log.add((String) myObj);
+        }else{
+        	_log.add(myObj.toString());
+        }
+	}
 	public void set(String myIn){
 		m_Object = myIn;
 		this.precalculate();
@@ -53,14 +64,24 @@ public class CsdElement {
 		_magnitude = Math_csd.magnitude(String_csd.getVectorOfBasis(_Coordinates,_Basis));
 	}
 	//Pre: Other CSD element needs to be precalculated
-	public double compareTo(CsdElement myOther){
-		double myResult = 0;
+	public Double compareTo(CsdElement myOther){
+		Double myResult = 0.0;
 		Set<String> myUnionB = String_csd.getUnionBasis(this._Basis, myOther._Basis);
 		Integer[] myVector = String_csd.getVectorOfBasis(this._Coordinates, myUnionB);
 		Integer[] otherVector = String_csd.getVectorOfBasis(myOther._Coordinates, myUnionB);
+		this.log("Vectors:"+Arrays.asList(myVector)+Arrays.asList(otherVector));
 		int myDotProd = Math_csd.dotProduct(myVector, otherVector);
+		this.log("dotProduct = "+myDotProd+",Magnitudes:"+this._magnitude+","+myOther._magnitude);
 		myResult = 1.0 * myDotProd/(this._magnitude * myOther._magnitude);
+
 		return myResult;
+	}
+	public Double compareTo(CsdElement myOther, int myPrecision){
+		Double myRet = this.compareTo(myOther);
+		myRet = myRet*Math.pow(10,myPrecision);
+		myRet = 1.0*Math.round(myRet);
+		myRet = 1.0*myRet/Math.pow(10,myPrecision);
+		return myRet;
 	}
 	public CsdElement(){
 	}
@@ -76,7 +97,7 @@ public class CsdElement {
 	}
 	protected String[] toCanonicalForm(String myObj){
 		String[] myRet = String_csd.toCanonicalForm(m_Object);
-		//System.out.println(Arrays.asList(myRet));
+		this.log(Arrays.asList(myRet));
 	    return myRet;
 	}
 }

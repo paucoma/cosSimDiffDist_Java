@@ -50,21 +50,21 @@ public class Math_csd {
 	public static Double magnitude(Integer[] myIn){
 		Integer mySum = 0;
 		for(Integer a : myIn){
-			mySum += a;
+			mySum += a*a;
 		}
 		return Math.sqrt(mySum);
 	}
 	public static double magnitude(int[] myIn){
 		int mySum = 0;
 		for(int a : myIn){
-			mySum += a;
+			mySum += a*a;
 		}
 		return Math.sqrt(mySum);
 	}
 	public static double magnitude(double[] myIn){
 		double mySum = 0;
 		for(double a : myIn){
-			mySum += a;
+			mySum += a*a;
 		}
 		return Math.sqrt(mySum);
 	}

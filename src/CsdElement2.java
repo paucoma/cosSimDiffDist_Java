@@ -42,7 +42,7 @@ public class CsdElement2 extends CsdElement {
 			myRet.add(String.valueOf(myChars[i])+String.valueOf(myChars[i+1]));
 		}
 		String[] myStrArr = new String[myRet.size()];
-		System.out.println(myRet);
+		//System.out.println(myRet);
 	    return myRet.toArray(myStrArr);
 	}
 }
