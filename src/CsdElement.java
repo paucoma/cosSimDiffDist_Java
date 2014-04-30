@@ -59,7 +59,7 @@ public class CsdElement {
 		Integer[] myVector = String_csd.getVectorOfBasis(this._Coordinates, myUnionB);
 		Integer[] otherVector = String_csd.getVectorOfBasis(myOther._Coordinates, myUnionB);
 		int myDotProd = Math_csd.dotProduct(myVector, otherVector);
-		myResult = myDotProd/(this._magnitude * myOther._magnitude);
+		myResult = 1.0 * myDotProd/(this._magnitude * myOther._magnitude);
 		return myResult;
 	}
 	public CsdElement(){
@@ -76,7 +76,7 @@ public class CsdElement {
 	}
 	protected String[] toCanonicalForm(String myObj){
 		String[] myRet = String_csd.toCanonicalForm(m_Object);
-		System.out.println(Arrays.asList(myRet));
+		//System.out.println(Arrays.asList(myRet));
 	    return myRet;
 	}
 }
