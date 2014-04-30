@@ -1,0 +1,3 @@
+Main-Class: com.paucoma.cossimdiff.CsdElemet
+
+

@@ -14,8 +14,7 @@ import java.util.Set;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
-
-import java.util.Map;
+import java.util.Arrays;
 
 public class CsdElement {
 
@@ -76,6 +75,8 @@ public class CsdElement {
 		return result;
 	}
 	protected String[] toCanonicalForm(String myObj){
-	    return String_csd.toCanonicalForm(m_Object);
+		String[] myRet = String_csd.toCanonicalForm(m_Object);
+		System.out.println(Arrays.asList(myRet));
+	    return myRet;
 	}
 }

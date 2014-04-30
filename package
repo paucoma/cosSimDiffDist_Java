@@ -1,0 +1,5 @@
+#!/bin/bash
+cd bin
+jar cfm ../cosSimDiffDist.jar ../manifest.txt ./com/*
+
+#echo "pending The Fat Jar Creator - JarSplice [](http://ninjacave.com/jarsplice)"

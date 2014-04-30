@@ -32,7 +32,7 @@ public class CsdElement2 extends CsdElement {
 	public CsdElement2(){
 	}
 	public CsdElement2(String myIn){
-		this.set(myIn);
+		super(myIn);
 	}
 	@Override
 	protected String[] toCanonicalForm(String myObj){
